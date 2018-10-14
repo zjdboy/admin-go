@@ -2,6 +2,7 @@ package main
 
 import (
 	"admin-go/handlers"
+	"admin-go/middleware"
 	"github.com/gin-gonic/gin"
 	"io"
 	"os"
@@ -16,7 +17,13 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/menu", handlers.MenuHandler)
+	router.POST("/login", handlers.LoginHandler)
+
+	authorized := router.Group("/blog")
+	authorized.Use(middleware.JWTAuth())
+	{
+		authorized.GET("/menu", handlers.MenuHandler)
+	}
 
 	router.Run(":8888")
 }

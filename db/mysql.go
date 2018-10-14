@@ -24,4 +24,5 @@ func init() {
 	}
 
 	MySQL.SetMaxIdleConns(10)
+	MySQL.SetMaxOpenConns(10)
 }

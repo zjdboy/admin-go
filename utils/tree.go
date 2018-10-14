@@ -1,13 +1,13 @@
 package utils
 
 import (
-	"admin/defs"
+	"admin-go/defs"
 )
 
 func initTree() {
 
 }
 
-func initMenu([]*defs.Menu) {
+func initMenu(menus []*defs.Menu) {
 
 }
