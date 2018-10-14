@@ -6,28 +6,27 @@ import (
 	"log"
 )
 
-func ListData() []*defs.Menu {
+func ListData() []defs.Menu {
 
 	rows, err := db.MySQL.Query("select id, icon, menu, url, pid, level from s_menu")
 
 	if err != nil {
-		log.Printf("query menus error, error message are :%v", err)
+		log.Fatalf("query menus error, error message are :%v", err.Error())
 		return nil
 	}
+	defer rows.Close()
 
-	var menus []*defs.Menu
+	var menus = make([]defs.Menu, 0)
 
 	for rows.Next() {
-		var id, level, pid int
-		var icon, menu, url string
+		var menu defs.Menu
 
-		if err := rows.Scan(&id, &icon, &menu, &url, &pid, &level); err != nil {
-			log.Printf("scan menus val error %v", err)
+		if err := rows.Scan(&menu.ID, &menu.Icon, &menu.Menu, &menu.Url, &menu.Pid, &menu.Level); err != nil {
+			log.Fatalf("scan menus val error %v", err.Error())
 			return nil
 		}
-		one := &defs.Menu{ID: id, Icon: icon, Menu: menu, Url: url, Pid: pid, Level: level}
-		menus = append(menus, one)
+		menus = append(menus, menu)
 	}
-	defer rows.Close()
+
 	return menus
 }

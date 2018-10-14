@@ -16,11 +16,11 @@ func init() {
 	MySQL, err = sql.Open("mysql", "root:admin@/dev?charset=utf8")
 
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Fatalf("mysql open error: %v", err.Error())
 	}
 
 	if err = MySQL.Ping(); err != nil {
-		log.Fatal(err.Error())
+		log.Fatalf("mysql connection error: %v", err.Error())
 	}
 
 	MySQL.SetMaxIdleConns(10)

@@ -3,11 +3,12 @@ package handlers
 import (
 	"admin-go/dbops/menu"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func MenuHandler(c *gin.Context) {
 
-	c.JSON(200, gin.H{
+	c.JSON(http.StatusOK, gin.H{
 		"menus": menu.ListData(),
 	})
 }

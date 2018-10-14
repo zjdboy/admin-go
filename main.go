@@ -23,6 +23,7 @@ func main() {
 	authorized.Use(middleware.JWTAuth())
 	{
 		authorized.GET("/menu", handlers.MenuHandler)
+		authorized.GET("/doc", handlers.DocHandler)
 	}
 
 	router.Run(":8888")
