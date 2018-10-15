@@ -16,6 +16,7 @@ func main() {
 	gin.DefaultWriter = io.MultiWriter(file)
 
 	router := gin.Default()
+	router.Use(middleware.CORS())
 
 	router.POST("/login", handlers.LoginHandler)
 
