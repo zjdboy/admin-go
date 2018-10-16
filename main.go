@@ -25,6 +25,13 @@ func main() {
 	{
 		authorized.GET("/menu", handlers.MenuHandler)
 		authorized.GET("/doc", handlers.DocHandler)
+
+	}
+
+	player := router.Group("/player")
+	player.Use(middleware.Limiter(2))
+	{
+		player.GET("/name", handlers.VideoHandler)
 	}
 
 	router.Run(":8888")
