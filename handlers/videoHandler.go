@@ -13,6 +13,8 @@ func VideoHandler(c *gin.Context) {
 
 	if err != nil {
 		log.Fatalf("sorry open video error %v", err.Error())
+		c.Abort()
+		return
 	}
 
 	c.Data(http.StatusOK, "video/mp4", video)
