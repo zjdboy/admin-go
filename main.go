@@ -28,8 +28,10 @@ func main() {
 
 	}
 
+	limit := middleware.NewLimit(2)
+
 	player := router.Group("/player")
-	player.Use(middleware.Limiter(2))
+	player.Use(middleware.Limiter(limit))
 	{
 		player.GET("/name", handlers.VideoHandler)
 	}

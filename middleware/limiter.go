@@ -12,7 +12,7 @@ type Limit struct {
 
 func (limiter *Limit) GetLimiter() bool {
 	if len(limiter.Bucket) >= limiter.Concurrent {
-		log.Fatalf("Reached the limt connections")
+		log.Fatalf("Reached the limit connections")
 		return false
 	}
 
@@ -27,16 +27,21 @@ func (limiter *Limit) Release() {
 	log.Fatalf("Release one connection: %d", connection)
 }
 
-func Limiter(cc int) gin.HandlerFunc {
-	limiter := &Limit{
+func NewLimit(cc int) *Limit {
+	return &Limit{
 		Concurrent: cc,
 		Bucket:     make(chan int, cc),
 	}
+}
+
+func Limiter(limiter *Limit) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if !limiter.GetLimiter() {
 			c.Abort()
 			return
 		}
+
+		//defer limiter.Release()
 		c.Next()
 	}
 }
