@@ -3,6 +3,7 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"log"
+	"net/http"
 )
 
 type Limit struct {
@@ -37,6 +38,10 @@ func NewLimit(cc int) *Limit {
 func Limiter(limiter *Limit) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if !limiter.GetLimiter() {
+			c.JSON(http.StatusOK, gin.H{
+				"code": http.StatusInternalServerError,
+				"msg":  "Reached the limit connections",
+			})
 			c.Abort()
 			return
 		}

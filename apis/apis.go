@@ -1,19 +1,15 @@
 package apis
 
 import (
+	"admin-go/config"
 	"admin-go/handlers"
 	"admin-go/middleware"
 	"github.com/gin-gonic/gin"
-	"io"
-	"os"
 )
 
 func Apis() *gin.Engine {
 
-	gin.SetMode(gin.DebugMode)
-
-	file, _ := os.Create("admin-go.log")
-	gin.DefaultWriter = io.MultiWriter(file)
+	config.Config()
 
 	router := gin.Default()
 	router.Use(middleware.CORS())
