@@ -1,3 +1,1 @@
-[GIN] 2018/10/18 - 22:01:39 | 200 |      49.865ms |             ::1 | GET      /player/name?video-id=lol.mp4
-[GIN] 2018/10/18 - 22:01:39 | 200 |     39.8969ms |             ::1 | GET      /player/name?video-id=lol.mp4
-[GIN] 2018/10/18 - 22:01:40 | 200 |     24.9084ms |             ::1 | GET      /player/name?video-id=lol.mp4
+[GIN] 2018/10/18 - 22:30:16 | 200 |            0s |             ::1 | POST     /login?username=admin&password=admin

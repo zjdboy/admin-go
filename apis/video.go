@@ -1,4 +1,4 @@
-package handlers
+package apis
 
 import (
 	"admin-go/defs"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func VideoHandler(c *gin.Context) {
+func VideoApi(c *gin.Context) {
 	video, err := ioutil.ReadFile(defs.BASE_VIDEO_PATH + c.Query("video-id"))
 
 	if err != nil {

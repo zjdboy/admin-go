@@ -1,10 +1,10 @@
 package main
 
 import (
-	"admin-go/apis"
+	"admin-go/handlers"
 )
 
 func main() {
-	router := apis.Apis()
+	router := handlers.Handlers()
 	router.Run(":8888")
 }

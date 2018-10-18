@@ -1,4 +1,4 @@
-package handlers
+package apis
 
 import (
 	"admin-go/dbops/menu"
@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func MenuHandler(c *gin.Context) {
+func MenuApi(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"menus": menu.ListData(),

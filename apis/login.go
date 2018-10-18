@@ -1,4 +1,4 @@
-package handlers
+package apis
 
 import (
 	"admin-go/defs"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func LoginHandler(c *gin.Context) {
+func LoginApi(c *gin.Context) {
 	user := &defs.UserCredentials{Username: c.Query("username"), Password: c.Query("password")}
 
 	if user.Username == "" || user.Password == "" {
