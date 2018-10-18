@@ -1,0 +1,2 @@
+[GIN] 2018/10/18 - 21:39:05 | 200 |     47.8708ms |             ::1 | GET      /player/name?video-id=lol.mp4
+[GIN] 2018/10/18 - 21:39:05 | 200 |     42.8801ms |             ::1 | GET      /player/name?video-id=lol.mp4
