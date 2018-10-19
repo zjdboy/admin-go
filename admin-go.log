@@ -1,1 +1,1 @@
-[GIN] 2018/10/18 - 22:30:16 | 200 |            0s |             ::1 | POST     /login?username=admin&password=admin
+[GIN] 2018/10/20 - 00:19:46 | 200 |         998µs |             ::1 | GET      /socket/room
