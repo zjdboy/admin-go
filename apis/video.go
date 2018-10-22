@@ -3,9 +3,9 @@ package apis
 import (
 	"admin-go/defs"
 	"github.com/gin-gonic/gin"
+	"io"
 	"io/ioutil"
 	"log"
-	"net/http"
 )
 
 func VideoApi(c *gin.Context) {
@@ -16,5 +16,10 @@ func VideoApi(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	c.Data(http.StatusOK, "video/mp4", video)
+	//c.SSEvent("video file", video)
+	c.Stream(func(w io.Writer) bool {
+		w.Write(video)
+		return true
+	})
+	//c.Data(http.StatusOK, "video/mp4", video)
 }

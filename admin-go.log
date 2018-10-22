@@ -1,4 +1,2 @@
-[GIN] 2018/10/22 - 21:52:21 | 404 |            0s |             ::1 | GET      /player/name?video-id=lol.mp4
-[GIN] 2018/10/22 - 21:52:25 | 200 |     33.8749ms |             ::1 | GET      /video/name?video-id=lol.mp4
-[GIN] 2018/10/22 - 21:52:25 | 200 |     33.9099ms |             ::1 | GET      /video/name?video-id=lol.mp4
-[GIN] 2018/10/22 - 22:09:21 | 404 |            0s |             ::1 | GET      /player/name?video-id=lol.mp4
+[GIN] 2018/10/22 - 22:44:48 | 200 |     99.7313ms |             ::1 | GET      /video/name?video-id=lol.mp4
+[GIN] 2018/10/22 - 22:45:36 | 200 |   47.5998697s |             ::1 | GET      /video/name?video-id=lol.mp4
