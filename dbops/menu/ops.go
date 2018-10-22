@@ -11,7 +11,7 @@ func ListData() []defs.Menu {
 	rows, err := db.MySQL.Query("select id, icon, menu, url, pid, level from s_menu")
 
 	if err != nil {
-		log.Fatalf("query menus error, error message are :%v", err.Error())
+		log.Printf("query menus error, error message are :%v", err.Error())
 		return nil
 	}
 	defer rows.Close()
@@ -22,7 +22,7 @@ func ListData() []defs.Menu {
 		var menu defs.Menu
 
 		if err := rows.Scan(&menu.ID, &menu.Icon, &menu.Menu, &menu.Url, &menu.Pid, &menu.Level); err != nil {
-			log.Fatalf("scan menus val error %v", err.Error())
+			log.Printf("scan menus val error %v", err.Error())
 			return nil
 		}
 		menus = append(menus, menu)

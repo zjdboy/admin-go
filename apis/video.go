@@ -12,10 +12,9 @@ func VideoApi(c *gin.Context) {
 	video, err := ioutil.ReadFile(defs.BASE_VIDEO_PATH + c.Query("video-id"))
 
 	if err != nil {
-		log.Fatalf("sorry open video error %v", err.Error())
+		log.Printf("sorry open video error %v", err.Error())
 		c.Abort()
 		return
 	}
-
 	c.Data(http.StatusOK, "video/mp4", video)
 }
