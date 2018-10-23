@@ -19,7 +19,6 @@ func JWTAuth() gin.HandlerFunc {
 				"msg":  "Missing Header",
 			})
 			c.Abort()
-			return
 		}
 		claims, err := utils.ParseToken(token)
 
@@ -29,7 +28,6 @@ func JWTAuth() gin.HandlerFunc {
 				"msg":  "Authentication Failure",
 			})
 			c.Abort()
-			return
 		}
 
 		if claims != nil {
@@ -39,7 +37,6 @@ func JWTAuth() gin.HandlerFunc {
 					"msg":  "Login Timeout",
 				})
 				c.Abort()
-				return
 			}
 			if claims.Username != uname {
 				c.JSON(http.StatusOK, gin.H{
@@ -47,7 +44,6 @@ func JWTAuth() gin.HandlerFunc {
 					"msg":  "Bad Request",
 				})
 				c.Abort()
-				return
 			}
 		}
 
