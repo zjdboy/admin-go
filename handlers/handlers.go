@@ -23,7 +23,7 @@ func Handlers() *gin.Engine {
 	video := router.Group("/video")
 	groups.Video(video)
 
-	socket:=router.Group("/socket")
+	socket := router.Group("/socket")
 	groups.Socket(socket)
 
 	return router

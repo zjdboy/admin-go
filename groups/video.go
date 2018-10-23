@@ -7,9 +7,8 @@ import (
 )
 
 func Video(video *gin.RouterGroup) {
-	limit := middleware.NewLimit(2)
 
-	video.Use(middleware.Limiter(limit))
+	video.Use(middleware.Limiter(middleware.NewLimit(2)))
 	{
 		video.GET("/name", apis.VideoApi)
 	}

@@ -36,10 +36,11 @@ func NewLimit(cc int) *Limit {
 }
 
 func Limiter(limiter *Limit) gin.HandlerFunc {
+	//defer limiter.Release()
 	return func(c *gin.Context) {
 		if !limiter.GetLimiter() {
 			c.JSON(http.StatusOK, gin.H{
-				"code": http.StatusInternalServerError,
+				"code": http.StatusTooManyRequests,
 				"msg":  "Reached the limit connections",
 			})
 			c.Abort()

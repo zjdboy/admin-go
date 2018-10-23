@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
+	"net/http"
 )
 
 func VideoApi(c *gin.Context) {
@@ -13,7 +14,10 @@ func VideoApi(c *gin.Context) {
 
 	if err != nil {
 		log.Printf("sorry open video error %v", err.Error())
-		c.Abort()
+		c.JSON(http.StatusOK, gin.H{
+			"code": http.StatusInternalServerError,
+			"msg":  "Reached the limit connections",
+		})
 		return
 	}
 	//c.SSEvent("video file", video)
