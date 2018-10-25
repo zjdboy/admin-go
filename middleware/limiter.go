@@ -22,9 +22,7 @@ func (limiter *Limit) GetLimiter() bool {
 }
 
 func (limiter *Limit) Release() {
-
 	connection := <-limiter.Bucket
-
 	log.Printf("Release one connection: %d", connection)
 }
 
@@ -36,7 +34,6 @@ func NewLimit(cc int) *Limit {
 }
 
 func Limiter(limiter *Limit) gin.HandlerFunc {
-	//defer limiter.Release()
 	return func(c *gin.Context) {
 		if !limiter.GetLimiter() {
 			c.JSON(http.StatusOK, gin.H{
@@ -46,6 +43,5 @@ func Limiter(limiter *Limit) gin.HandlerFunc {
 			c.Abort()
 		}
 		c.Next()
-		defer limiter.Release()
 	}
 }

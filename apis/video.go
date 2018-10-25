@@ -2,6 +2,7 @@ package apis
 
 import (
 	"admin-go/defs"
+	"admin-go/middleware"
 	"github.com/gin-gonic/gin"
 	"io"
 	"io/ioutil"
@@ -22,7 +23,12 @@ func VideoApi(c *gin.Context) {
 	}
 	//c.SSEvent("video file", video)
 	c.Stream(func(w io.Writer) bool {
-		w.Write(video)
+		limiter := middleware.NewLimit(3)
+		_, err := w.Write(video)
+
+		if err != nil {
+			defer limiter.Release()
+		}
 		return true
 	})
 	//c.Data(http.StatusOK, "video/mp4", video)
